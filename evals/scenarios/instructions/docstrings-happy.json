@@ -1,0 +1,13 @@
+{
+  "id": "docstrings-happy",
+  "kind": "eval",
+  "under_test": ["instructions/docstrings.md"],
+  "fixture": "calc",
+  "prompt": "Add a function percent_of(part, whole) to src/calc.py that returns part as a percentage of whole, rounded to 2 decimal places. Raise ValueError when whole is 0.",
+  "checks": [
+    { "id": "loaded", "check": "output_contains", "text": "instructions: docstrings@0.1.0", "threshold": 0.9 },
+    { "id": "did-task", "check": "function_defined", "file": "src/calc.py", "function": "percent_of", "threshold": 0.9 },
+    { "id": "docstrings", "check": "docstrings", "under": "src/", "threshold": 0.9 },
+    { "id": "tests-pass", "check": "tests_pass", "threshold": 0.9 }
+  ]
+}

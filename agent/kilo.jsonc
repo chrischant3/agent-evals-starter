@@ -1,0 +1,10 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  // AGENTS.md and .agents/skills/ are discovered automatically. Other instruction files are listed here.
+  "instructions": ["instructions/docstrings.md"],
+  "permission": {
+    // Guardrails. Rules are evaluated in order and the last match wins, so catch-alls go first.
+    "edit": { "*": "deny", "src/**": "allow", "tests/**": "allow", "CHANGELOG.md": "allow" },
+    "bash": { "*": "ask", "python -m pytest*": "allow" }
+  }
+}

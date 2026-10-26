@@ -1,0 +1,10 @@
+{
+  "id": "skill-trigger-explicit",
+  "kind": "eval",
+  "under_test": [".agents/skills/deprecate-function"],
+  "fixture": "calc",
+  "prompt": "Deprecate divide in src/calc.py. Callers should move to safe_divide, which will arrive in the next release.",
+  "checks": [
+    { "id": "skill-used", "check": "output_contains", "text": "skill: deprecate-function@1.0.0", "threshold": 0.9 }
+  ]
+}

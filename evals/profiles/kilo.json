@@ -1,0 +1,15 @@
+{
+  "name": "kilo",
+  "description": "Kilo Code CLI, run headless. Set KILO_BIN to a pinned install.",
+  "bin_env": "KILO_BIN",
+  "default_bin": "kilo",
+  "command": ["{bin}", "run", "--auto", "--format", "json", "-m", "{model}", "{prompt}"],
+  "version_command": ["{bin}", "--version"],
+  "requires_model": true,
+  "passthrough": ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "OPENROUTER_API_KEY", "KILO_ORG_ID"],
+  "env": {
+    "KILO_CONFIG": "{evals}/kilo.eval.jsonc",
+    "KILO_DISABLE_SKILL_SHELL": "1"
+  },
+  "auth_file": { "from_env": "KILO_EVAL_AUTH_FILE", "to_dir": "{XDG_DATA_HOME}/kilo" }
+}

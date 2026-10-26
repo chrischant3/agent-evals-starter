@@ -1,0 +1,15 @@
+{
+  "id": "skill-execution",
+  "kind": "eval",
+  "under_test": [".agents/skills/deprecate-function"],
+  "fixture": "calc",
+  "prompt": "Use the deprecate-function skill to deprecate divide in src/calc.py in favour of safe_divide.",
+  "checks": [
+    { "id": "skill-used", "check": "output_contains", "text": "skill: deprecate-function@1.0.0", "threshold": 0.9 },
+    { "id": "warns", "check": "function_matches", "file": "src/calc.py", "function": "divide", "pattern": "warnings\\.warn\\([^)]*DeprecationWarning", "threshold": 0.9 },
+    { "id": "docstring-note", "check": "function_matches", "file": "src/calc.py", "function": "divide", "pattern": "Deprecated:.*safe_divide", "threshold": 0.9 },
+    { "id": "test-added", "check": "file_matches", "file": "tests/test_calc.py", "pattern": "pytest\\.warns\\(\\s*DeprecationWarning", "threshold": 0.9 },
+    { "id": "changelog", "check": "changelog_mentions", "file": "CHANGELOG.md", "section": "Unreleased", "text": "divide", "threshold": 0.9 },
+    { "id": "behaviour-kept", "check": "tests_pass", "threshold": 0.9 }
+  ]
+}

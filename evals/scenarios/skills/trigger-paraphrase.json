@@ -1,0 +1,10 @@
+{
+  "id": "skill-trigger-paraphrase",
+  "kind": "eval",
+  "under_test": [".agents/skills/deprecate-function"],
+  "fixture": "calc",
+  "prompt": "We're phasing out divide in src/calc.py in favour of safe_divide. Make sure anyone still calling it gets a warning.",
+  "checks": [
+    { "id": "skill-used", "check": "output_contains", "text": "skill: deprecate-function@1.0.0", "threshold": 0.8 }
+  ]
+}

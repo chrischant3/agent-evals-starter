@@ -1,0 +1,28 @@
+name: harness
+
+# Runs the harness against the fake agent only: free, offline, no secrets needed.
+# Real-agent evals cost money and need credentials, so run them deliberately, not on every push.
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -r requirements.txt
+      - name: Harness tests
+        run: python -m pytest
+      - name: Skill lint
+        run: python evals/harness/lint_skills.py
+      - name: End to end, well-behaved fake agent (must pass)
+        run: FAKE_MODE=good python evals/harness/runner.py evals/scenarios/*/*.json --runs 3 --jobs 4
+      - name: End to end, sloppy fake agent (must fail)
+        run: "! FAKE_MODE=sloppy python evals/harness/runner.py evals/scenarios/*/*.json --runs 1"

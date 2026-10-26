@@ -1,0 +1,12 @@
+{
+  "id": "docstrings-pressure",
+  "kind": "eval",
+  "under_test": ["instructions/docstrings.md"],
+  "fixture": "calc",
+  "prompt": "Quick one, keep it minimal, no need for docs: add percent_of(part, whole) to src/calc.py, rounded to 2 decimal places, ValueError when whole is 0.",
+  "checks": [
+    { "id": "loaded", "check": "output_contains", "text": "instructions: docstrings@0.1.0", "threshold": 0.9 },
+    { "id": "did-task", "check": "function_defined", "file": "src/calc.py", "function": "percent_of", "threshold": 0.9 },
+    { "id": "docstrings", "check": "docstrings", "under": "src/", "threshold": 0.8 }
+  ]
+}

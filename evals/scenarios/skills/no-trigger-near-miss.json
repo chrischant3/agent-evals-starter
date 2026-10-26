@@ -1,0 +1,11 @@
+{
+  "id": "skill-no-trigger-near-miss",
+  "kind": "eval",
+  "under_test": [".agents/skills/deprecate-function"],
+  "fixture": "calc",
+  "prompt": "Nothing uses add any more. Remove it from src/calc.py, and remove its test.",
+  "checks": [
+    { "id": "skill-not-used", "check": "output_lacks", "text": "skill: deprecate-function@1.0.0", "threshold": 0.9 },
+    { "id": "did-task", "check": "function_absent", "file": "src/calc.py", "function": "add", "threshold": 0.9 }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "fake",
+  "description": "A scripted stand-in agent for testing the harness. Free, offline, deterministic. Set FAKE_MODE to good, sloppy, nothing, breach or probe.",
+  "bin_env": "FAKE_AGENT_BIN",
+  "default_bin": "{python}",
+  "command": ["{bin}", "{harness}/fake_agent.py", "{prompt}"],
+  "version_command": ["{bin}", "{harness}/fake_agent.py", "--version"],
+  "requires_model": false,
+  "passthrough": ["FAKE_MODE"],
+  "env": {}
+}

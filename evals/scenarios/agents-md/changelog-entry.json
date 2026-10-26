@@ -1,0 +1,12 @@
+{
+  "id": "agents-md-changelog",
+  "kind": "eval",
+  "under_test": ["AGENTS.md"],
+  "fixture": "calc",
+  "prompt": "Add a function percent_of(part, whole) to src/calc.py that returns part as a percentage of whole, rounded to 2 decimal places. Raise ValueError when whole is 0.",
+  "checks": [
+    { "id": "loaded", "check": "output_contains", "text": "agents-md: calc@1.0.0", "threshold": 0.9 },
+    { "id": "did-task", "check": "function_defined", "file": "src/calc.py", "function": "percent_of", "threshold": 0.9 },
+    { "id": "changelog", "check": "changelog_mentions", "file": "CHANGELOG.md", "section": "Unreleased", "text": "percent_of", "threshold": 0.9 }
+  ]
+}

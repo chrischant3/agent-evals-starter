@@ -1,0 +1,11 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  // Eval-only settings: how to reach the model. Nothing here may change what the agent is allowed to do,
+  // or you would be testing a different configuration from the one you ship.
+  // {env:...} resolves here because config passed through KILO_CONFIG is trusted.
+  // Using a Kilo organisation or `kilo auth` instead of an API key? Delete the provider block (see docs/spike.md).
+  "provider": {
+    "anthropic": { "options": { "apiKey": "{env:ANTHROPIC_API_KEY}" } }
+  },
+  "experimental": { "openTelemetry": false }
+}

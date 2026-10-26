@@ -1,0 +1,10 @@
+[project]
+name = "agent-evals-starter"
+version = "0.1.0"
+description = "Guardrails and evals for AGENTS.md files, skills and agent instructions, with runs isolated from each other and from your machine."
+requires-python = ">=3.10"
+dependencies = ["pytest>=7", "pyyaml>=6"]
+
+[tool.pytest.ini_options]
+pythonpath = ["evals/harness"]
+testpaths = ["evals/harness/tests"]
