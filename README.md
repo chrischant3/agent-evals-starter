@@ -149,6 +149,8 @@ Replace the contents of `agent/` with your own `AGENTS.md`, skills and instructi
 - **Isolation is not a security sandbox.** Runs are isolated from each other and from your config, but the agent and `tests_pass` still execute code on your machine. Use a disposable VM or container for anything you would not run yourself.
 - **Results are per agent, per version, per model.** Re-run after any of them changes. The fingerprint tells you whether two reports are comparable.
 
-## Licence
+## Author and licence
 
-MIT. See [LICENSE](LICENSE).
+Created by Christopher Chant at Growth Punks.
+
+MIT licence. See [LICENSE](LICENSE).
